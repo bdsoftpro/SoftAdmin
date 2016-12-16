@@ -1,0 +1,39 @@
+{
+    "name": "tcg/softadmin",
+    "description": "Admin Panel for laravel by software Bangladesh",
+    "keywords": ["laravel admin", "admin panel", "User Controller"],
+    "license": "MIT",
+    "homepage": "https://www.softwarebd.ml/softadmin/",
+    "support": {
+        "issues": "https://www.softwarebd.ml/softadmin/issues",
+        "source": "https://www.softwarebd.ml/softadmin"
+    },
+    "authors": [
+        {
+            "name": "Md Delwar Hossain",
+            "email": "delwar0cse@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.3.*",
+        "intervention/image": "^2.3",
+        "doctrine/dbal": "^2.5"
+    },
+    "require-dev": {
+        "phpunit/phpcov": "~3.0",
+        "phpunit/phpunit": "~5.0",
+        "laravel/framework": "~5.3.8",
+        "orchestra/testbench": "~3.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SBD\\Softadmin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SBD\\Softadmin\\Tests\\": "tests/"
+      }
+    },
+    "minimum-stability": "stable"
+}

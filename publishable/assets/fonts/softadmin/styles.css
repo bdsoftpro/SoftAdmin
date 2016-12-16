@@ -1,0 +1,595 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "softadmin";
+  src:url("fonts/softadmin.eot");
+  src:url("fonts/softadmin.eot?#iefix") format("embedded-opentype"),
+    url("fonts/softadmin.woff") format("woff"),
+    url("fonts/softadmin.ttf") format("truetype"),
+    url("fonts/softadmin.svg#softadmin") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "softadmin" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="softadmin-"]:before,
+[class*=" softadmin-"]:before {
+  font-family: "softadmin" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.softadmin-bread:before {
+  content: "\61";
+}
+.softadmin-helm:before {
+  content: "\62";
+}
+.softadmin-play:before {
+  content: "\63";
+}
+.softadmin-activity:before {
+  content: "\64";
+}
+.softadmin-company:before {
+  content: "\65";
+}
+.softadmin-file-text:before {
+  content: "\66";
+}
+.softadmin-folder:before {
+  content: "\67";
+}
+.softadmin-paw:before {
+  content: "\68";
+}
+.softadmin-sort:before {
+  content: "\6f";
+}
+.softadmin-sort-asc:before {
+  content: "\70";
+}
+.softadmin-sort-desc:before {
+  content: "\71";
+}
+.softadmin-handle:before {
+  content: "\6d";
+}
+.softadmin-hammer:before {
+  content: "\6e";
+}
+.softadmin-images:before {
+  content: "\69";
+}
+.softadmin-categories:before {
+  content: "\6a";
+}
+.softadmin-group:before {
+  content: "\6b";
+}
+.softadmin-plus:before {
+  content: "\72";
+}
+.softadmin-person:before {
+  content: "\73";
+}
+.softadmin-people:before {
+  content: "\74";
+}
+.softadmin-power:before {
+  content: "\75";
+}
+.softadmin-tools:before {
+  content: "\76";
+}
+.softadmin-anchor:before {
+  content: "\77";
+}
+.softadmin-double-down:before {
+  content: "\78";
+}
+.softadmin-double-up:before {
+  content: "\79";
+}
+.softadmin-double-left:before {
+  content: "\7a";
+}
+.softadmin-double-right:before {
+  content: "\41";
+}
+.softadmin-window-list:before {
+  content: "\42";
+}
+.softadmin-x:before {
+  content: "\43";
+}
+.softadmin-dot:before {
+  content: "\44";
+}
+.softadmin-dot-2:before {
+  content: "\45";
+}
+.softadmin-dot-3:before {
+  content: "\46";
+}
+.softadmin-list:before {
+  content: "\47";
+}
+.softadmin-list-add:before {
+  content: "\48";
+}
+.softadmin-pie-chart:before {
+  content: "\49";
+}
+.softadmin-watch:before {
+  content: "\4a";
+}
+.softadmin-data:before {
+  content: "\4b";
+}
+.softadmin-music:before {
+  content: "\4c";
+}
+.softadmin-settings:before {
+  content: "\4e";
+}
+.softadmin-video:before {
+  content: "\4f";
+}
+.softadmin-trash:before {
+  content: "\50";
+}
+.softadmin-tv:before {
+  content: "\51";
+}
+.softadmin-lock:before {
+  content: "\52";
+}
+.softadmin-news:before {
+  content: "\4d";
+}
+.softadmin-bag:before {
+  content: "\53";
+}
+.softadmin-upload:before {
+  content: "\54";
+}
+.softadmin-refresh:before {
+  content: "\55";
+}
+.softadmin-character:before {
+  content: "\57";
+}
+.softadmin-move:before {
+  content: "\58";
+}
+.softadmin-paypal:before {
+  content: "\56";
+}
+.softadmin-paper-plane:before {
+  content: "\59";
+}
+.softadmin-ticket:before {
+  content: "\5a";
+}
+.softadmin-youtube-play:before {
+  content: "\30";
+}
+.softadmin-boat:before {
+  content: "\31";
+}
+.softadmin-check:before {
+  content: "\6c";
+}
+.softadmin-alarm-clock:before {
+  content: "\32";
+}
+.softadmin-controller:before {
+  content: "\34";
+}
+.softadmin-pizza:before {
+  content: "\35";
+}
+.softadmin-backpack:before {
+  content: "\36";
+}
+.softadmin-barbeque:before {
+  content: "\37";
+}
+.softadmin-bomb:before {
+  content: "\38";
+}
+.softadmin-book-download:before {
+  content: "\39";
+}
+.softadmin-browser:before {
+  content: "\21";
+}
+.softadmin-brush:before {
+  content: "\22";
+}
+.softadmin-bubble-hear:before {
+  content: "\23";
+}
+.softadmin-polaroid:before {
+  content: "\24";
+}
+.softadmin-crop:before {
+  content: "\26";
+}
+.softadmin-dashboard:before {
+  content: "\27";
+}
+.softadmin-hotdog:before {
+  content: "\28";
+}
+.softadmin-laptop:before {
+  content: "\29";
+}
+.softadmin-paint-bucket:before {
+  content: "\2c";
+}
+.softadmin-photo:before {
+  content: "\2d";
+}
+.softadmin-photos:before {
+  content: "\2e";
+}
+.softadmin-receipt:before {
+  content: "\2f";
+}
+.softadmin-buy:before {
+  content: "\3a";
+}
+.softadmin-lightbulb:before {
+  content: "\3b";
+}
+.softadmin-archive:before {
+  content: "\3f";
+}
+.softadmin-paperclip:before {
+  content: "\40";
+}
+.softadmin-warning:before {
+  content: "\5b";
+}
+.softadmin-basket:before {
+  content: "\5d";
+}
+.softadmin-bell:before {
+  content: "\5e";
+}
+.softadmin-book:before {
+  content: "\5f";
+}
+.softadmin-chat:before {
+  content: "\60";
+}
+.softadmin-down-circled:before {
+  content: "\7b";
+}
+.softadmin-location:before {
+  content: "\7d";
+}
+.softadmin-forward:before {
+  content: "\7e";
+}
+.softadmin-flashlight:before {
+  content: "\5c";
+}
+.softadmin-trophy:before {
+  content: "\e001";
+}
+.softadmin-diamond:before {
+  content: "\e002";
+}
+.softadmin-credit-cards:before {
+  content: "\e003";
+}
+.softadmin-shop:before {
+  content: "\e004";
+}
+.softadmin-sound:before {
+  content: "\e005";
+}
+.softadmin-study:before {
+  content: "\e006";
+}
+.softadmin-pen:before {
+  content: "\e007";
+}
+.softadmin-params:before {
+  content: "\e008";
+}
+.softadmin-fire:before {
+  content: "\e009";
+}
+.softadmin-dollar:before {
+  content: "\e00a";
+}
+.softadmin-bulb:before {
+  content: "\e00b";
+}
+.softadmin-lab:before {
+  content: "\e00c";
+}
+.softadmin-cup:before {
+  content: "\e00d";
+}
+.softadmin-megaphone:before {
+  content: "\e00e";
+}
+.softadmin-heart:before {
+  content: "\e00f";
+}
+.softadmin-bubble:before {
+  content: "\e011";
+}
+.softadmin-search:before {
+  content: "\e012";
+}
+.softadmin-tag:before {
+  content: "\e013";
+}
+.softadmin-world:before {
+  content: "\25";
+}
+.softadmin-camera:before {
+  content: "\2a";
+}
+.softadmin-calendar:before {
+  content: "\7c";
+}
+.softadmin-mail:before {
+  content: "\e014";
+}
+.softadmin-phone:before {
+  content: "\e015";
+}
+.softadmin-star:before {
+  content: "\e016";
+}
+.softadmin-star-half:before {
+  content: "\e017";
+}
+.softadmin-star-half-1:before {
+  content: "\e018";
+}
+.softadmin-star-two:before {
+  content: "\e019";
+}
+.softadmin-medal-rank-star:before {
+  content: "\e01a";
+}
+.softadmin-facebook:before {
+  content: "\e01b";
+}
+.softadmin-google-plus:before {
+  content: "\e01c";
+}
+.softadmin-twitter:before {
+  content: "\e01d";
+}
+.softadmin-github:before {
+  content: "\e01e";
+}
+.softadmin-code:before {
+  content: "\e01f";
+}
+.softadmin-pie-graph:before {
+  content: "\e020";
+}
+.softadmin-javascript:before {
+  content: "\e021";
+}
+.softadmin-wand:before {
+  content: "\e022";
+}
+.softadmin-wineglass:before {
+  content: "\e023";
+}
+.softadmin-milestone:before {
+  content: "\e024";
+}
+.softadmin-terminal:before {
+  content: "\e025";
+}
+.softadmin-plug:before {
+  content: "\e026";
+}
+.softadmin-gift:before {
+  content: "\e027";
+}
+.softadmin-markdown:before {
+  content: "\e028";
+}
+.softadmin-beer:before {
+  content: "\e029";
+}
+.softadmin-credit-card:before {
+  content: "\e02a";
+}
+.softadmin-bolt:before {
+  content: "\e02b";
+}
+.softadmin-external:before {
+  content: "\e02c";
+}
+.softadmin-magnet:before {
+  content: "\e02d";
+}
+.softadmin-certificate:before {
+  content: "\e02e";
+}
+.softadmin-cloud-download:before {
+  content: "\e02f";
+}
+.softadmin-campfire:before {
+  content: "\e030";
+}
+.softadmin-new:before {
+  content: "\e031";
+}
+.softadmin-skull:before {
+  content: "\e032";
+}
+.softadmin-telephone:before {
+  content: "\e033";
+}
+.softadmin-trees:before {
+  content: "\e034";
+}
+.softadmin-bar-chart:before {
+  content: "\e035";
+}
+.softadmin-check-circle:before {
+  content: "\e036";
+}
+.softadmin-exclamation:before {
+  content: "\e037";
+}
+.softadmin-font:before {
+  content: "\e03a";
+}
+.softadmin-puzzle:before {
+  content: "\e03b";
+}
+.softadmin-smile:before {
+  content: "\e03c";
+}
+.softadmin-frown:before {
+  content: "\e03d";
+}
+.softadmin-meh:before {
+  content: "\e03e";
+}
+.softadmin-leaf:before {
+  content: "\e03f";
+}
+.softadmin-info-circled:before {
+  content: "\e040";
+}
+.softadmin-underline:before {
+  content: "\e041";
+}
+.softadmin-wallet:before {
+  content: "\e042";
+}
+.softadmin-truck:before {
+  content: "\e043";
+}
+.softadmin-eye:before {
+  content: "\e044";
+}
+.softadmin-sun:before {
+  content: "\e045";
+}
+.softadmin-barbell:before {
+  content: "\e04a";
+}
+.softadmin-bookmark:before {
+  content: "\e04c";
+}
+.softadmin-volume-up:before {
+  content: "\e04d";
+}
+.softadmin-volume-down:before {
+  content: "\e04e";
+}
+.softadmin-wifi:before {
+  content: "\e04f";
+}
+.softadmin-pause:before {
+  content: "\e053";
+}
+.softadmin-resize-full:before {
+  content: "\e054";
+}
+.softadmin-resize-small:before {
+  content: "\e055";
+}
+.softadmin-download:before {
+  content: "\e056";
+}
+.softadmin-droplet:before {
+  content: "\e057";
+}
+.softadmin-umbrella:before {
+  content: "\e058";
+}
+.softadmin-harddrive:before {
+  content: "\e059";
+}
+.softadmin-css3:before {
+  content: "\e05a";
+}
+.softadmin-html5:before {
+  content: "\e05b";
+}
+.softadmin-tree:before {
+  content: "\e05e";
+}
+.softadmin-file-code:before {
+  content: "\e061";
+}
+.softadmin-bug:before {
+  content: "\e062";
+}
+.softadmin-rocket:before {
+  content: "\e063";
+}
+.softadmin-key:before {
+  content: "\33";
+}
+.softadmin-question:before {
+  content: "\2b";
+}
+.softadmin-cursor:before {
+  content: "\3c";
+}
+.softadmin-lifebuoy:before {
+  content: "\3d";
+}
+.softadmin-thumbs-up:before {
+  content: "\3e";
+}
+.softadmin-thumb-tack:before {
+  content: "\e000";
+}
+.softadmin-edit:before {
+  content: "\e010";
+}
+.softadmin-angle-down:before {
+  content: "\e038";
+}
+.softadmin-angle-left:before {
+  content: "\e039";
+}
+.softadmin-angle-right:before {
+  content: "\e046";
+}
+.softadmin-angle-up:before {
+  content: "\e047";
+}
+.softadmin-home:before {
+  content: "\e048";
+}
