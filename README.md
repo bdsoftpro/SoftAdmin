@@ -8,7 +8,7 @@ Laravel Admin & BREAD System (Browse, Read, Edit, Add, & Delete), made for Larav
 After creating your new Laravel application you can include the Voyager package with the following command: 
 
 ```bash
-composer require tcg/voyager
+composer require sbd/softadmin
 ```
 
 Next make sure to create a new database and add your database credentials to your .env file:
@@ -20,7 +20,7 @@ DB_USERNAME=homestead
 DB_PASSWORD=secret
 ```
 
-Add the Voyager service provider to the `config/app.php` file in the `providers` array:
+Add the Softadmin service provider to the `config/app.php` file in the `providers` array:
 
 ```php
 'providers' => [
@@ -28,7 +28,7 @@ Add the Voyager service provider to the `config/app.php` file in the `providers`
     //...
     
     // Package Service Providers
-    TCG\Voyager\VoyagerServiceProvider::class,
+    SBD\Softadmin\SoftadminServiceProvider::class,
     // ...
     
     // Application Service Providers
@@ -36,19 +36,19 @@ Add the Voyager service provider to the `config/app.php` file in the `providers`
 ],
 ```
 
-Lastly, we can install voyager. You can do this either with or without dummy data.
+Lastly, we can install softadmin. You can do this either with or without dummy data.
 The dummy data will include 1 admin account (if no users already exists), 1 demo page, 4 demo posts, 2 categories and 7 settings.
 
-To install Voyager without dummy simply run
+To install Softadmin without dummy simply run
 
 ```bash
-php artisan voyager:install
+php artisan softadmin:install
 ```
 
 If you prefer installing it with dummy run
 
 ```bash
-php artisan voyager:install --with-dummy
+php artisan softadmin:install --with-dummy
 ```
 
 And we're all good to go! 
@@ -66,13 +66,13 @@ If you did not go with the dummy user, you may wish to assign admin priveleges t
 This can easily be done by running this command:
 
 ```bash
-php artisan voyager:admin your@email.com
+php artisan softadmin:admin your@email.com
 ```
 
 If you did not install the dummy data and you wish to create a new admin user you can pass the `--create` flag, like so:
 
 ```bash
-php artisan voyager:admin your@email.com --create
+php artisan softadmin:admin your@email.com --create
 ```
 
 And you will be prompted for the users name and password.
