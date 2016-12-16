@@ -65,7 +65,7 @@ class SoftadminServiceProvider extends ServiceProvider
         $basePath = dirname(__DIR__);
         $publishable = [
             'voyager_assets' => [
-                "$basePath/publishable/assets" => public_path('vendor/tcg/softadmin/assets'),
+                "$basePath/publishable/assets" => public_path('vendor/sbd/softadmin/assets'),
             ],
             'migrations' => [
                 "$basePath/publishable/database/migrations/" => database_path('migrations'),

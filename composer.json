@@ -1,5 +1,5 @@
 {
-    "name": "tcg/softadmin",
+    "name": "sbd/softadmin",
     "description": "Admin Panel for laravel by software Bangladesh",
     "keywords": ["laravel admin", "admin panel", "User Controller"],
     "license": "MIT",

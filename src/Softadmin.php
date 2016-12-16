@@ -39,7 +39,7 @@ class Softadmin
 
             // Loop through all the packages and get the version of softadmin
             foreach ($file->packages as $package) {
-                if ($package->name == 'tcg/softadmin') {
+                if ($package->name == 'sbd/softadmin') {
                     $version = $package->version;
                     break;
                 }

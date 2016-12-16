@@ -40,7 +40,7 @@ return [
     |
     */
 
-    'assets_path' => '/vendor/tcg/softadmin/assets',
+    'assets_path' => '/vendor/sbd/softadmin/assets',
 
     /*
     |--------------------------------------------------------------------------

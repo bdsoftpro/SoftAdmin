@@ -59,7 +59,7 @@ class ControllersCommand extends Command
     public function fire()
     {
         $stub = $this->getStub();
-        $files = $this->filesystem->files(base_path('vendor/tcg/softadmin/src/Http/Controllers'));
+        $files = $this->filesystem->files(base_path('vendor/sbd/softadmin/src/Http/Controllers'));
         $namespace = config('softadmin.controllers.namespace', 'SBD\\Softadmin\\Http\\Controllers');
 
         $appNamespace = $this->getAppNamespace();
@@ -101,7 +101,7 @@ class ControllersCommand extends Command
      */
     public function getStub()
     {
-        return $this->filesystem->get(base_path('/vendor/tcg/softadmin/stubs/'.$this->stub));
+        return $this->filesystem->get(base_path('/vendor/sbd/softadmin/stubs/'.$this->stub));
     }
 
     /**
