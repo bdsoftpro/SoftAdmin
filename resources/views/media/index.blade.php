@@ -1,9 +1,9 @@
 @extends('softadmin::master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ config('softadmin.assets_path') }}/css/media/media.css"/>
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/js/select2/select2.min.css">
-    <link rel="stylesheet" href="{{ config('softadmin.assets_path') }}/css/media/dropzone.css"/>
+    <link rel="stylesheet" href="{{ URL::to(config('softadmin.assets_path')) }}/css/media/media.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/js/select2/select2.min.css">
+    <link rel="stylesheet" href="{{ URL::to(config('softadmin.assets_path')) }}/css/media/dropzone.css"/>
 @stop
 
 @section('content')
@@ -75,7 +75,7 @@
                                             <div class="link_icon">
                                                 <template v-if="file.type.includes('image')">
                                                     <div class="img_icon"
-                                                         style="background-size: cover; background-image: url(@{{ encodeURI(file.path) }}); background-repeat:no-repeat; background-position:center center;display:inline-block; width:100%; height:100%;"></div>
+                                                         style="background-size: cover; background-image: url({{ URL::to('/') }}@{{ encodeURI(file.path) }}); background-repeat:no-repeat; background-position:center center;display:inline-block; width:100%; height:100%;"></div>
                                                 </template>
                                                 <template v-if="file.type.includes('video')">
                                                     <i class="icon softadmin-video"></i>
@@ -128,20 +128,20 @@
                                 <div class="right_details">
                                     <div class="detail_img @{{ selected_file.type }}">
                                         <template v-if="selected_file.type.includes('image')">
-                                            <img src="@{{ selected_file.path }}"/>
+                                            <img src="{{ URL::to('/') }}@{{ selected_file.path }}"/>
                                         </template>
                                         <template v-if="selected_file.type.includes('video')">
                                             <video width="100%" height="auto" controls>
-                                                <source src="@{{selected_file.path}}" type="video/mp4">
-                                                <source src="@{{selected_file.path}}" type="video/ogg">
-                                                <source src="@{{selected_file.path}}" type="video/webm">
+                                                <source src="{{ URL::to('/') }}@{{selected_file.path}}" type="video/mp4">
+                                                <source src="{{ URL::to('/') }}@{{selected_file.path}}" type="video/ogg">
+                                                <source src="{{ URL::to('/') }}@{{selected_file.path}}" type="video/webm">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </template>
                                         <template v-if="selected_file.type.includes('audio')">
                                             <audio controls style="width:100%; margin-top:5px;">
-                                                <source src="@{{selected_file.path}}" type="audio/ogg">
-                                                <source src="@{{selected_file.path}}" type="audio/mpeg">
+                                                <source src="{{ URL::to('/') }}@{{selected_file.path}}" type="audio/ogg">
+                                                <source src="{{ URL::to('/') }}@{{selected_file.path}}" type="audio/mpeg">
                                                 Your browser does not support the audio element.
                                             </audio>
                                         </template>
@@ -155,18 +155,18 @@
 
                                     </div>
                                     <div class="detail_info @{{selected_file.type}}">
-							<span><h4>Title:</h4>
-							<p>@{{selected_file.name}}</p></span>
+                            <span><h4>Title:</h4>
+                            <p>@{{selected_file.name}}</p></span>
                                         <span><h4>Type:</h4>
-							<p>@{{selected_file.type}}</p></span>
+                            <p>@{{selected_file.type}}</p></span>
                                         <template v-if="selected_file.type != 'folder'">
-								<span><h4>Size:</h4>
-								<p><span class="selected_file_count">@{{ selected_file.items }} item(s)</span><span
+                                <span><h4>Size:</h4>
+                                <p><span class="selected_file_count">@{{ selected_file.items }} item(s)</span><span
                                             class="selected_file_size">@{{selected_file.size}}</span></p></span>
                                             <span><h4>Public URL:</h4>
-								<p><a href="{{ URL::to('/') }}@{{ selected_file.path }}" target="_blank">Click Here</a></p></span>
+                                <p><a href="{{ URL::to('/') }}@{{ selected_file.path }}" target="_blank">Click Here</a></p></span>
                                             <span><h4>Last Modified:</h4>
-								<p>@{{selected_file.last_modified}}</p></span>
+                                <p>@{{selected_file.last_modified}}</p></span>
                                         </template>
                                     </div>
                                 </div>
@@ -330,9 +330,9 @@
 
 
     <!-- Include our script files -->
-    <script src="{{ config('softadmin.assets_path') }}/js/select2/select2.min.js"></script>
-    <script src="{{ config('softadmin.assets_path') }}/js/media/dropzone.js"></script>
-    <script src="{{ config('softadmin.assets_path') }}/js/media/media.js"></script>
+    <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/select2/select2.min.js"></script>
+    <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/media/dropzone.js"></script>
+    <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/media/media.js"></script>
     <script type="text/javascript">
         var media = new SoftadminMedia({
             baseUrl: "{{ route('softadmin.dashboard') }}"

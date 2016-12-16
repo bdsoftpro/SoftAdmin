@@ -9,38 +9,38 @@
           type='text/css'>
 
     <!-- CSS Libs -->
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/bootstrap-switch.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/checkbox3.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/dataTables.bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/lib/css/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/css/bootstrap-toggle.min.css"
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/checkbox3.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/lib/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/css/bootstrap-toggle.min.css"
           rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/js/icheck/icheck.css"
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/js/icheck/icheck.css"
           rel="stylesheet">
     <!-- CSS App -->
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/css/style.css">
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/css/themes/flat-blue.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/css/themes/flat-blue.css">
 
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ config('softadmin.assets_path') }}/images/logo-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ URL::to(config('softadmin.assets_path')) }}/images/logo-icon.png" type="image/x-icon">
 
     <!-- CSS Fonts -->
-    <link href="{{ config('softadmin.assets_path') }}/fonts/softadmin/styles.css" rel="stylesheet">
-    <script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/jquery.min.js"></script>
+    <link href="{{ URL::to(config('softadmin.assets_path')) }}/fonts/softadmin/styles.css" rel="stylesheet">
+    <script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="{{ config('softadmin.assets_path') }}/js/vue.min.js"></script>
+    <script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/js/vue.min.js"></script>
 
     @yield('css')
 
     <!-- Softadmin CSS -->
-    <link rel="stylesheet" href="{{ config('softadmin.assets_path') }}/css/softadmin.css">
+    <link rel="stylesheet" href="{{ URL::to(config('softadmin.assets_path')) }}/css/softadmin.css">
 
     @yield('head')
 
@@ -49,7 +49,7 @@
 <body class="flat-blue">
 
 <div id="softadmin-loader">
-    <img src="{{ config('softadmin.assets_path') }}/images/logo-icon.png" alt="Softadmin Loader">
+    <img src="{{ URL::to(config('softadmin.assets_path')) }}/images/logo-icon.png" alt="Softadmin Loader">
 </div>
 
 <?php
@@ -145,7 +145,7 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
                     </div><!-- .navbar-header -->
 
                     <div class="panel widget center bgimage"
-                         style="background-image:url({{ Softadmin::image( Softadmin::setting('admin_bg_image'), config('softadmin.assets_path') . '/images/bg.jpg' ) }});">
+                         style="background-image:url({{ Softadmin::image( Softadmin::setting('admin_bg_image'), URL::to(config('softadmin.assets_path')) . '/images/bg.jpg' ) }});">
                         <div class="dimmer"></div>
                         <div class="panel-content">
                             <img src="{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
@@ -178,19 +178,19 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
 </footer>
 <!-- Javascript Libs -->
 
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/bootstrap-switch.min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/jquery.matchHeight-min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/select2.full.min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/js/bootstrap-toggle.min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/bootstrap-switch.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/select2.full.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/js/jquery.cookie.js"></script>
 <!-- Javascript -->
 
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/js/readmore.min.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/js/app.js"></script>
-<script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/toastr.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/js/readmore.min.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/js/app.js"></script>
+<script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/toastr.min.js"></script>
 <script>
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type', 'info') }}";

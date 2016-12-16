@@ -138,7 +138,7 @@ class Menu extends Model
             if (isset($options->background) && $options->background == true) {
                 $styles = ' style="background-color:'.$item->color.'"';
             }
-            $output .= '<li'.$li_class.'><a '.$a_attrs.' href="'.$item->url.'" target="'.$item->target.'"'.$styles.'>'.$icon.'<span>'.$item->title.'</span></a>';
+            $output .= '<li'.$li_class.'><a '.$a_attrs.' href="'.url($item->url).'" target="'.$item->target.'"'.$styles.'>'.$icon.'<span>'.$item->title.'</span></a>';
 
             if ($children_menu_items->count() > 0) {
                 $output = self::buildBootstrapOutput($menuItems, $output, $options, $request, $item->id);
@@ -222,7 +222,7 @@ class Menu extends Model
                 $styles = ' style="background-color:'.$item->color.'"';
             }
 
-            $output .= '<li'.$li_class.'><a href="'.$item->url.'" target="'.$item->target.'"'.$styles.'>'.$icon.'<span>'.$item->title.'</span></a>';
+            $output .= '<li'.$li_class.'><a href="'.url($item->url).'" target="'.$item->target.'"'.$styles.'>'.$icon.'<span>'.$item->title.'</span></a>';
 
             if ($children_menu_items->count() > 0) {
                 $output = self::buildOutput($menuItems, $output, $options, $request, $item->id);
@@ -281,7 +281,7 @@ class Menu extends Model
                 $collapse_id = Str::slug($item->title, '-').'-dropdown-element';
                 $a_attrs = 'data-toggle="collapse" href="#'.$collapse_id.'"';
             } else {
-                $a_attrs = 'href="'.$item->url.'"';
+                $a_attrs = 'href="'.url($item->url).'"';
             }
 
             // Permission Checker
@@ -369,9 +369,9 @@ class Menu extends Model
             $output .= '<li class="dd-item" data-id="'.$item->id.'">';
             $output .= '<div class="pull-right item_actions">';
             $output .= '<div class="btn-sm btn-danger pull-right delete" data-id="'.$item->id.'"><i class="softadmin-trash"></i> Delete</div>';
-            $output .= '<div class="btn-sm btn-primary pull-right edit" data-id="'.$item->id.'" data-title="'.$item->title.'" data-url="'.$item->url.'" data-target="'.$item->target.'" data-icon_class="'.$item->icon_class.'" data-color="'.$item->color.'"><i class="softadmin-edit"></i> Edit</div>';
+            $output .= '<div class="btn-sm btn-primary pull-right edit" data-id="'.$item->id.'" data-title="'.$item->title.'" data-url="'.url($item->url).'" data-target="'.$item->target.'" data-icon_class="'.$item->icon_class.'" data-color="'.$item->color.'"><i class="softadmin-edit"></i> Edit</div>';
             $output .= '</div>';
-            $output .= '<div class="dd-handle">'.$item->title.' <small class="url">'.$item->url.'</small></div>';
+            $output .= '<div class="dd-handle">'.$item->title.' <small class="url">'.url($item->url).'</small></div>';
 
             $children_menu_items = $menuItems->filter(function ($value, $key) use ($item) {
                 return $value->parent_id == $item->id;

@@ -8,13 +8,13 @@
     <meta name="author" content="">
     <title>Admin Login</title>
     {{-- Softadmin CSS --}}
-    <link rel="stylesheet" href="{{ config('softadmin.assets_path') }}/css/softadmin.css">
+    <link rel="stylesheet" href="{{ URL::to(config('softadmin.assets_path')) }}/css/softadmin.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
     <link href="https://file.myfontastic.com/QLbQY2QVvDNQgGeBRf7fWh/icons.css" rel="stylesheet">
 
     <style>
         .login-page {
-            background-image: url('{{ Softadmin::image( Softadmin::setting("admin_bg_image"), config('softadmin.assets_path') . "/images/bg.jpg" ) }}');
+            background-image: url('{{ Softadmin::image( Softadmin::setting("admin_bg_image"), URL::to(config('softadmin.assets_path')) . "/images/bg.jpg" ) }}');
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -196,7 +196,7 @@
     <div id="bgdim"></div>
 
     <div id="title_section">
-        <img class="logo-img" src="{{ config('softadmin.assets_path') }}/images/logo-icon-light.png" alt="Admin Login">
+        <img class="logo-img" src="{{ URL::to(config('softadmin.assets_path')) }}/images/logo-icon-light.png" alt="Admin Login">
         <div class="copy">
             <h1>{{ Softadmin::setting('admin_title', 'Softadmin') }}</h1>
             <p>{{ Softadmin::setting('admin_description', 'Welcome to Softadmin. The Missing Admin for Laravel') }}</p>
@@ -216,7 +216,7 @@
                 <button class="btn btn-primary btn-login" id="softadmin-login-btn">
                     <span class="login_text"><i class="softadmin-lock"></i> Login</span>
                     <span class="login_loader">
-                        <img class="btn-loading" src="{{ config('softadmin.assets_path') }}/images/logo-icon-light.png"> Logging in
+                        <img class="btn-loading" src="{{ URL::to(config('softadmin.assets_path')) }}/images/logo-icon-light.png"> Logging in
                     </span>
                 </button>
             </form>

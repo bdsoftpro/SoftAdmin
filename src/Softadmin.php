@@ -82,7 +82,7 @@ class Softadmin
     public static function image($file, $default = '')
     {
         if (!empty($file) && Storage::exists(config('softadmin.storage.subfolder').$file)) {
-            return Storage::url(config('softadmin.storage.subfolder').$file);
+            return url(Storage::url(config('softadmin.storage.subfolder').$file));
         }
 
         return $default;

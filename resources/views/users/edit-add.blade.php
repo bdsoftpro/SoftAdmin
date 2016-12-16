@@ -119,6 +119,6 @@
             $('.toggleswitch').bootstrapToggle();
         });
     </script>
-    <script src="{{ config('softadmin.assets_path') }}/lib/js/tinymce/tinymce.min.js"></script>
-    <script src="{{ config('softadmin.assets_path') }}/js/voyager_tinymce.js"></script>
+    <script src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/tinymce/tinymce.min.js"></script>
+    <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/voyager_tinymce.js"></script>
 @stop

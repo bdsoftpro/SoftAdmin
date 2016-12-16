@@ -1,7 +1,7 @@
 @extends('softadmin::master')
 
 @section('head')
-    <script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/jsonarea/jsonarea.min.js"></script>
+    <script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/jsonarea/jsonarea.min.js"></script>
     <script>var valid_json = [];</script>
 @stop
 
@@ -227,7 +227,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">Icon (optional) Use a <a
-                                            href="{{ config('softadmin.assets_path') . '/fonts/softadmin/icons-reference.html' }}"
+                                            href="{{ URL::to(config('softadmin.assets_path')) . '/fonts/softadmin/icons-reference.html' }}"
                                             target="_blank">Softadmin Font Class</a></label>
                                 <input type="text" class="form-control" name="icon"
                                        placeholder="Icon to use for this Table"

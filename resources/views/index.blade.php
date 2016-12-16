@@ -1,14 +1,14 @@
 @extends('softadmin::master')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/css/ga-embed.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/css/ga-embed.css">
 @stop
 
 @section('content')
     <div class="page-content">
         <div class="widgets">
             <?php if (Illuminate\Support\Facades\Schema::hasTable(with(new SBD\Softadmin\Models\User())->getTable())) { ?>
-            <div class="panel widget center bgimage" style="background-image:url({{ config('softadmin.assets_path') }}/images/widget-backgrounds/02.png);">
+            <div class="panel widget center bgimage" style="background-image:url({{ URL::to(config('softadmin.assets_path')) }}/images/widget-backgrounds/02.png);">
                 <div class="dimmer"></div>
                 <div class="panel-content">
                     <i class="softadmin-group"></i>
@@ -20,7 +20,7 @@
             </div>
             <?php } ?>
             <?php if (Illuminate\Support\Facades\Schema::hasTable(with(new SBD\Softadmin\Models\Post())->getTable())) { ?>
-            <div class="panel widget center bgimage" style="background-image:url({{ config('softadmin.assets_path') }}/images/widget-backgrounds/03.png);">
+            <div class="panel widget center bgimage" style="background-image:url({{ URL::to(config('softadmin.assets_path')) }}/images/widget-backgrounds/03.png);">
                 <div class="dimmer"></div>
                 <div class="panel-content">
                     <i class="softadmin-news"></i>
@@ -32,7 +32,7 @@
             </div>
             <?php } ?>
             <?php if (Illuminate\Support\Facades\Schema::hasTable(with(new SBD\Softadmin\Models\Page())->getTable())) { ?>
-            <div class="panel widget center bgimage" style="background-image:url({{ config('softadmin.assets_path') }}/images/widget-backgrounds/04.png);">
+            <div class="panel widget center bgimage" style="background-image:url({{ URL::to(config('softadmin.assets_path')) }}/images/widget-backgrounds/04.png);">
                 <div class="dimmer"></div>
                 <div class="panel-content">
                     <i class="softadmin-file-text"></i>
@@ -141,14 +141,14 @@
             }(window, document, 'script'));
         </script>
 
-        <script src="{{ config('softadmin.assets_path') }}/js/ga-embed/chart.min.js"></script>
-        <script src="{{ config('softadmin.assets_path') }}/js/ga-embed/moment.min.js"></script>
+        <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/ga-embed/chart.min.js"></script>
+        <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/ga-embed/moment.min.js"></script>
         <!-- Include the ViewSelector2 component script. -->
-        <script src="{{ config('softadmin.assets_path') }}/js/ga-embed/view-selector2.js"></script>
+        <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/ga-embed/view-selector2.js"></script>
         <!-- Include the DateRangeSelector component script. -->
-        <script src="{{ config('softadmin.assets_path') }}/js/ga-embed/date-range-selector.js"></script>
+        <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/ga-embed/date-range-selector.js"></script>
         <!-- Include the ActiveUsers component script. -->
-        <script src="{{ config('softadmin.assets_path') }}/js/ga-embed/active-users.js"></script>
+        <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/ga-embed/active-users.js"></script>
 
         <script>
             // == NOTE ==

@@ -1,7 +1,7 @@
 @extends('softadmin::master')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ config('softadmin.assets_path') }}/css/nestable.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/css/nestable.css">
 @stop
 
 @section('page_header')
@@ -83,7 +83,7 @@
                         <label for="url">URL for the Menu Item</label>
                         <input type="text" class="form-control" name="url" placeholder="URL"><br>
                         <label for="icon_class">Font Icon class for the Menu Item (Use a <a
-                                    href="{{ config('softadmin.assets_path') . '/fonts/softadmin/icons-reference.html' }}"
+                                    href="{{ URL::to(config('softadmin.assets_path')) . '/fonts/softadmin/icons-reference.html' }}"
                                     target="_blank">Softadmin Font Class</a>)</label>
                         <input type="text" class="form-control" name="icon_class"
                                placeholder="Icon Class (optional)"><br>
@@ -151,7 +151,7 @@
 
 @section('javascript')
 
-    <script type="text/javascript" src="{{ config('softadmin.assets_path') }}/js/jquery.nestable.js"></script>
+    <script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/js/jquery.nestable.js"></script>
     <script>
         $(document).ready(function () {
             $('.dd').nestable({/* config options */});

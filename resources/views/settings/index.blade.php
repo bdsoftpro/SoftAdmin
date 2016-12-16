@@ -157,7 +157,7 @@
 @stop
 
 @section('head')
-    <script type="text/javascript" src="{{ config('softadmin.assets_path') }}/lib/js/jsonarea/jsonarea.min.js"></script>
+    <script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/jsonarea/jsonarea.min.js"></script>
 @stop
 
 @section('page_header')
@@ -406,6 +406,6 @@
         <input type="hidden" name="type_slug" id="type_slug" value="settings">
     </form>
 
-    <script src="{{ config('softadmin.assets_path') }}/lib/js/tinymce/tinymce.min.js"></script>
-    <script src="{{ config('softadmin.assets_path') }}/js/voyager_tinymce.js"></script>
+    <script src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/tinymce/tinymce.min.js"></script>
+    <script src="{{ URL::to(config('softadmin.assets_path')) }}/js/voyager_tinymce.js"></script>
 @stop

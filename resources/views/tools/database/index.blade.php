@@ -1,7 +1,7 @@
 @extends('softadmin::master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ config('softadmin.assets_path') }}/css/database.css">
+    <link rel="stylesheet" href="{{ URL::to(config('softadmin.assets_path')) }}/css/database.css">
 @stop
 
 @section('page_header')
