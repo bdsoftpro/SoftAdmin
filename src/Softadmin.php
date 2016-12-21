@@ -95,7 +95,7 @@ class Softadmin
 
     public static function frontendroutes()
     {
-        require __DIR__.'/../frontend/routes/softadfrontend.php';
+        require __DIR__.'/../frontend/routes/softfrontend.php';
     }
 
     public static function can($permission)
