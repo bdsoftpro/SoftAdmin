@@ -88,9 +88,14 @@ class Softadmin
         return $default;
     }
 
-    public static function routes()
+    public static function backendroutes()
     {
-        require __DIR__.'/../routes/softadmin.php';
+        require __DIR__.'/../backend/routes/softadmin.php';
+    }
+
+    public static function frontendroutes()
+    {
+        require __DIR__.'/../frontend/routes/softadmin.php';
     }
 
     public static function can($permission)
