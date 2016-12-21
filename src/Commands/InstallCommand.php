@@ -83,7 +83,7 @@ class InstallCommand extends Command
 
         $this->info('Adding Softadmin routes to routes/web.php');
         $filesystem->append(base_path('routes/web.php'),
-            "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Softadmin::routes();\n});\n");
+            "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Softadmin::backendroutes();\n});\n"\n\nRoute::group(['prefix' => ''], function () {\n    Softadmin::frontendroutes();\n});\n");
 
         $this->info('Seeding data into the database');
         $this->seed('SoftadminDatabaseSeeder');
@@ -95,6 +95,6 @@ class InstallCommand extends Command
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
 
-        $this->info('Successfully installed Softadmin! Enjoy 🎉');
+        $this->info('Successfully installed Softadmin! Enjoy');
     }
 }
