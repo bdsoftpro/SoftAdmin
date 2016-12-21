@@ -82,7 +82,7 @@ class InstallCommand extends Command
         $process->setWorkingDirectory(base_path())->run();
 
         $this->info('Adding Softadmin routes to routes/web.php');
-        $filesystem->put(base_path('routes/web.php'),
+        $filesystem->append(base_path('routes/web.php'),
             "\n\nRoute::group(['prefix' => 'admin'], function () {\n    Softadmin::backendroutes();\n});\n\n\nRoute::group(['prefix' => ''], function () {\n    Softadmin::frontendroutes();\n});\n");
 
         $this->info('Seeding data into the database');

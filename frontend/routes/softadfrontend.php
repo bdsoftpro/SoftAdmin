@@ -11,7 +11,7 @@
 */
 
 Route::group(['as' => 'softfront.'], function () {
-    $namespacePrefix = '\\SBD\\Softadmin\\Http\\Controllers\\';
+    $namespacePrefix = '\\SBD\\Softadmin\\Http\\Controllers\\Frontend\\';
     try {
         foreach (\SBD\Softadmin\Models\DataType::all() as $dataTypes) {
             Route::resource($dataTypes->slug, $namespacePrefix.'SoftadminBreadController');
