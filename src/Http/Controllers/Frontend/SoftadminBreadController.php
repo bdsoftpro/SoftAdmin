@@ -45,7 +45,7 @@ class SoftadminBreadController extends Controller
             $dataTypeContent = DB::table($dataType->name)->get();
         }
 
-        $view = 'softadmin::bread.browse';
+        $view = 'softadmin::backend.bread.browse';
 
         if (view()->exists("softadmin::backend.$slug.browse")) {
             $view = "softadmin::backend.$slug.browse";
@@ -79,7 +79,7 @@ class SoftadminBreadController extends Controller
             ? call_user_func([$dataType->model_name, 'findOrFail'], $id)
             : DB::table($dataType->name)->where('id', $id)->first(); // If Model doest exist, get data from table name
 
-        $view = 'softadmin::bread.read';
+        $view = 'softadmin::backend.bread.read';
 
         if (view()->exists("softadmin::backend.$slug.read")) {
             $view = "softadmin::backend.$slug.read";
