@@ -1,4 +1,4 @@
-@extends('softadmin::master')
+@extends('softadmin::backend.master')
 
 @section('css')
     <link rel="stylesheet" href="{{ URL::to(config('softadmin.assets_path')) }}/css/media/media.css"/>

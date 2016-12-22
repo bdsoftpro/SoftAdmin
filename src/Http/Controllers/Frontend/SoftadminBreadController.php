@@ -47,8 +47,8 @@ class SoftadminBreadController extends Controller
 
         $view = 'softadmin::bread.browse';
 
-        if (view()->exists("softadmin::$slug.browse")) {
-            $view = "softadmin::$slug.browse";
+        if (view()->exists("softadmin::backend.$slug.browse")) {
+            $view = "softadmin::backend.$slug.browse";
         }
 
         return view($view, compact('dataType', 'dataTypeContent'));
@@ -81,8 +81,8 @@ class SoftadminBreadController extends Controller
 
         $view = 'softadmin::bread.read';
 
-        if (view()->exists("softadmin::$slug.read")) {
-            $view = "softadmin::$slug.read";
+        if (view()->exists("softadmin::backend.$slug.read")) {
+            $view = "softadmin::backend.$slug.read";
         }
 
         return view($view, compact('dataType', 'dataTypeContent'));

@@ -14,7 +14,7 @@ class SoftadminController extends Controller
 {
     public function index()
     {
-        return view('softadmin::index');
+        return view('softadmin::backend.index');
     }
 
     public function logout()
@@ -61,6 +61,6 @@ class SoftadminController extends Controller
 
     public function profile()
     {
-        return view('softadmin::profile');
+        return view('softadmin::backend.profile');
     }
 }

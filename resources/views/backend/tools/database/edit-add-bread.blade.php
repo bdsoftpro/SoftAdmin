@@ -1,4 +1,4 @@
-@extends('softadmin::master')
+@extends('softadmin::backend.master')
 
 @section('head')
     <script type="text/javascript" src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/jsonarea/jsonarea.min.js"></script>

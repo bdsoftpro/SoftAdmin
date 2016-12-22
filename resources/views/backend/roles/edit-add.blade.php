@@ -1,4 +1,4 @@
-@extends('softadmin::master')
+@extends('softadmin::backend.master')
 
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -25,6 +25,7 @@
                     <form role="form"
                           action="@if(isset($dataTypeContent->id)){{ route('softadmin.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('softadmin.'.$dataType->slug.'.store') }}@endif"
                           method="POST" enctype="multipart/form-data">
+
                         <!-- PUT Method if we are editing -->
                         @if(isset($dataTypeContent->id))
                             {{ method_field("PUT") }}
@@ -45,14 +46,7 @@
                                 </div>
                             @endif
 
-                            <!-- If we are editing -->
-                            @if(isset($dataTypeContent->id))
-                                <?php $dataTypeRows = $dataType->editRows; ?>
-                            @else
-                                <?php $dataTypeRows = $dataType->addRows; ?>
-                            @endif
-
-                            @foreach($dataTypeRows as $row)
+                            @foreach($dataType->addRows as $row)
                                 <div class="form-group">
                                     <label for="name">{{ $row->display_name }}</label>
 
@@ -77,59 +71,20 @@
                                             <img src="{{ Softadmin::image( $dataTypeContent->{$row->field} ) }}"
                                                  style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                         @elseif($row->type == "file" && isset($dataTypeContent->{$row->field}))
-                                            <div class="fileType">{{ $dataTypeContent->{$row->field} }}</div>
+                                            <div class="fileType">{{ $dataTypeContent->{$row->field} }} }}</div>
                                         @endif
                                         <input type="file" name="{{ $row->field }}">
                                     @elseif($row->type == "select_dropdown")
                                         <?php $options = json_decode($row->details); ?>
-                                        @if(isset($options->relationship))
-                                            {{-- If this is a relationship and the method does not exist, show a warning message --}}
-                                            @if( !method_exists( $dataType->model_name, $row->field ) )
-                                                <p class="label label-warning"><i class="softadmin-warning"></i> Make sure to setup the appropriate relationship in the {{ $row->field . '()' }} method of the {{ $dataType->model_name }} class.</p>   
-                                            @endif
-
-                                            @if( method_exists( $dataType->model_name, $row->field ) )
-                                                <?php $selected_value = (isset($dataTypeContent->{$row->field}) && !empty(old($row->field, $dataTypeContent->{$row->field}))) ? old($row->field, $dataTypeContent->{$row->field}) : old($row->field); ?>
-                                                <select class="form-control select2" name="{{ $row->field }}">
-                                                    <?php $relationshipClass = get_class(app($dataType->model_name)->{$row->field}()->getRelated()); ?>
-                                                    <?php $relationshipOptions = $relationshipClass::all(); ?>
-                                                    @foreach($relationshipOptions as $relationshipOption)
-                                                        <option value="{{ $relationshipOption->{$options->relationship->key} }}" @if($selected_value == $relationshipOption->{$options->relationship->key}){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->relationship->label} }}</option>
-                                                    @endforeach
-                                                </select>
-                                            @else
-                                                <select class="form-control select2" name="{{ $row->field }}"></select>
-                                            @endif
-                                        @else
-                                            <?php $selected_value = (isset($dataTypeContent->{$row->field}) && !empty(old($row->field, $dataTypeContent->{$row->field}))) ? old($row->field, $dataTypeContent->{$row->field}) : old($row->field); ?>
-                                            <select class="form-control select2" name="{{ $row->field }}">
-                                                <?php $default = (isset($options->default) && !isset($dataTypeContent->{$row->field})) ? $options->default : NULL; ?>
-                                                @if(isset($options->options))
-                                                    @foreach($options->options as $key => $option)
-                                                        <option value="{{ $key }}" @if($default == $key && $selected_value === NULL){{ 'selected="selected"' }}@endif @if($selected_value == $key){{ 'selected="selected"' }}@endif>{{ $option }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                        @endif
-
-                                    @elseif($row->type == "select_multiple")
-                                        <?php $options = json_decode($row->details); ?>
-                                        {{-- If this is a relationship and the method does not exist, show a warning message --}}
-                                        @if(isset($options->relationship) && !method_exists( $dataType->model_name, $row->field ) )
-                                            <p class="label label-warning"><i class="softadmin-warning"></i> Make sure to setup the appropriate relationship in the {{ $row->field . '()' }} method of the {{ $dataType->model_name }} class.</p>   
-                                        @endif
-                                        
-                                        <select class="form-control select2" name="{{ $row->field }}[]" multiple>
-                                            @if(isset($options->relationship))
-                                                <!-- Check that the method relationship exists -->
-                                                @if( method_exists( $dataType->model_name, $row->field ) )
-                                                    <?php $selected_values = isset($dataTypeContent) ? $dataTypeContent->{$row->field}()->getRelated()->pluck($options->relationship->key)->all() : array(); ?>
-                                                    <?php $relationshipClass = get_class(app($dataType->model_name)->{$row->field}()->getRelated()); ?>
-                                                    <?php $relationshipOptions = $relationshipClass::all(); ?>
-                                                    @foreach($relationshipOptions as $relationshipOption)
-                                                        <option value="{{ $relationshipOption->{$options->relationship->key} }}" @if(in_array($relationshipOption->{$options->relationship->key}, $selected_values)){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->relationship->label} }}</option>
-                                                    @endforeach
-                                                @endif
+                                        <?php $selected_value = (isset($dataTypeContent->{$row->field}) && !empty(old($row->field,
+                                                        $dataTypeContent->{$row->field}))) ? old($row->field,
+                                                $dataTypeContent->{$row->field}) : old($row->field); ?>
+                                        <select class="form-control" name="{{ $row->field }}">
+                                            <?php $default = (isset($options->default) && !isset($dataTypeContent->{$row->field})) ? $options->default : NULL; ?>
+                                            @if(isset($options->options))
+                                                @foreach($options->options as $key => $option)
+                                                    <option value="{{ $key }}" @if($default == $key && $selected_value === NULL){{ 'selected="selected"' }}@endif @if($selected_value == $key){{ 'selected="selected"' }}@endif>{{ $option }}</option>
+                                                @endforeach
                                             @endif
                                         </select>
 
@@ -173,8 +128,28 @@
                                 </div>
                             @endforeach
 
+                            <label for="permission">Permissions</label><br>
+                            <a href="#" class="permission-select-all">Select All</a> / <a href="#"  class="permission-deselect-all">Deselect All</a>
+                            <ul class="permissions checkbox">
+                                <?php
+                                    $role_permissions = (isset($dataTypeContent)) ? $dataTypeContent->permissions->pluck('key')->toArray() : [];
+                                ?>
+                                @foreach(SBD\Softadmin\Models\Permission::all()->groupBy('table_name') as $table => $permission)
+                                    <li>
+                                        <input type="checkbox" id="{{$table}}" class="permission-group">
+                                        <label for="{{$table}}"><strong>{{ucwords($table)}}</strong></label>
+                                        <ul>
+                                            @foreach($permission as $perm)
+                                                <li>
+                                                    <input type="checkbox" id="permission-{{$perm->id}}" name="permissions[]" class="the-permission" value="{{$perm->id}}" @if(in_array($perm->key, $role_permissions)) checked @endif>
+                                                    <label for="permission-{{$perm->id}}">{{title_case(str_replace('_', ' ', $perm->key))}}</label>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div><!-- panel-body -->
-
                         <div class="panel-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -183,10 +158,10 @@
                     <iframe id="form_target" name="form_target" style="display:none"></iframe>
                     <form id="my_form" action="{{ route('softadmin.upload') }}" target="form_target" method="post"
                           enctype="multipart/form-data" style="width:0;height:0;overflow:hidden">
+                        {{ csrf_field() }}
                         <input name="image" id="upload_file" type="file"
                                onchange="$('#my_form').submit();this.value='';">
                         <input type="hidden" name="type_slug" id="type_slug" value="{{ $dataType->slug }}">
-                        {{ csrf_field() }}
                     </form>
 
                 </div>
@@ -199,6 +174,36 @@
     <script>
         $('document').ready(function () {
             $('.toggleswitch').bootstrapToggle();
+
+            $('.permission-group').on('change', function(){
+                $(this).siblings('ul').find("input[type='checkbox']").prop('checked', this.checked);
+            });
+
+            $('.permission-select-all').on('click', function(){
+                $('ul.permissions').find("input[type='checkbox']").prop('checked', true);
+                return false;
+            });
+
+            $('.permission-deselect-all').on('click', function(){
+                $('ul.permissions').find("input[type='checkbox']").prop('checked', false);
+                return false;
+            });
+
+            function parentChecked(){
+                $('.permission-group').each(function(){
+                    var allChecked = true;
+                    $(this).siblings('ul').find("input[type='checkbox']").each(function(){
+                        if(!this.checked) allChecked = false;
+                    });
+                    $(this).prop('checked', allChecked);
+                });
+            }
+
+            parentChecked();
+
+            $('.the-permission').on('change', function(){
+                parentChecked();
+            });
         });
     </script>
     <script src="{{ URL::to(config('softadmin.assets_path')) }}/lib/js/tinymce/tinymce.min.js"></script>

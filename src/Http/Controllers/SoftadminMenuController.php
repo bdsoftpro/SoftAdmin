@@ -15,7 +15,7 @@ class SoftadminMenuController extends Controller
 
         $menu = Menu::find($id);
 
-        return view('softadmin::menus.builder', compact('menu'));
+        return view('softadmin::backend.menus.builder', compact('menu'));
     }
 
     public function delete_menu($menu, $id)

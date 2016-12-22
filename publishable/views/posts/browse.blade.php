@@ -1,4 +1,4 @@
-@extends('softadmin::master')
+@extends('softadmin::backend.master')
 
 @section('page_header')
     <h1 class="page-title">

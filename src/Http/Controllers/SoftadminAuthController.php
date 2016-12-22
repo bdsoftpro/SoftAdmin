@@ -11,7 +11,7 @@ class SoftadminAuthController extends Controller
 
     public function login(Request $request)
     {
-        return view('softadmin::login');
+        return view('softadmin::backend.login');
     }
 
     public function postLogin(Request $request)

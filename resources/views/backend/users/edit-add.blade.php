@@ -1,4 +1,4 @@
-@extends('softadmin::master')
+@extends('softadmin::backend.master')
 
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">

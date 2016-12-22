@@ -16,7 +16,7 @@ class SoftadminSettingsController extends Controller
 
         $settings = Setting::orderBy('order', 'ASC')->get();
 
-        return view('softadmin::settings.index', compact('settings'));
+        return view('softadmin::backend.settings.index', compact('settings'));
     }
 
     public function store(Request $request)

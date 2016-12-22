@@ -29,7 +29,7 @@ class SoftadminMediaController extends Controller
     {
         Softadmin::can('browse_media');
 
-        return view('softadmin::media.index');
+        return view('softadmin::backend.media.index');
     }
 
     public function files(Request $request)

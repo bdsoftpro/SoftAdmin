@@ -1,8 +1,8 @@
-@extends('softadmin::master')
+@extends('softadmin::backend.master')
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="softadmin-list-add"></i> {{ $dataType->display_name_plural }}
+        <i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('softadmin.'.$dataType->slug.'.create') }}" class="btn btn-success">
             <i class="softadmin-plus"></i> Add New
         </a>
@@ -14,13 +14,6 @@
 @stop
 
 @section('content')
-    <div class="container-fluid">
-        <div class="alert alert-info">
-            <strong>How To Use:</strong>
-            <p>You can output a menu anywhere on your site by calling <code>Menu::display('name')</code></p>
-        </div>
-    </div>
-
     <div class="page-content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -28,38 +21,38 @@
                     <div class="panel-body">
                         <table id="dataTable" class="table table-hover">
                             <thead>
-                            <tr>
-                                @foreach($dataType->browseRows as $rows)
-                                <th>{{ $rows->display_name }}</th>
-                                @endforeach
-                                <th class="actions">Actions</th>
-                            </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Created At</th>
+                                    <th>Avatar</th>
+                                    <th>Role</th>
+                                    <th class="actions">Actions</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                @foreach($dataTypeContent as $data)
+                            @foreach($dataTypeContent as $data)
                                 <tr>
-                                    @foreach($dataType->browseRows as $row)
+                                    <td>{{$data->name}}</td>
+                                    <td>{{$data->email}}</td>
+                                    <td>{{$data->created_at}}</td>
                                     <td>
-                                        @if($row->type == 'image')
-                                            <img src="@if( strpos($data->{$row->field}, 'http://') === false && strpos($data->{$row->field}, 'https://') === false){{ Softadmin::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
-                                        @else
-                                            {{ $data->{$row->field} }}
-                                        @endif
+                                        <img src="@if( strpos($data->avatar, 'http://') === false && strpos($data->avatar, 'https://') === false){{ Softadmin::image( $data->avatar ) }}@else{{ $data->avatar }}@endif" style="width:100px">
                                     </td>
-                                    @endforeach
+                                    <td>{{ $data->role ? $data->role->display_name : '' }}</td>
                                     <td class="no-sort no-click">
-                                        <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}">
+                                        <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}" id="delete-{{ $data->id }}">
                                             <i class="softadmin-trash"></i> Delete
                                         </div>
                                         <a href="{{ route('softadmin.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
                                             <i class="softadmin-edit"></i> Edit
                                         </a>
-                                        <a href="{{ route('softadmin.'.$dataType->slug.'.builder', $data->id) }}" class="btn-sm btn-success pull-right">
-                                            <i class="softadmin-list"></i> Builder
+                                        <a href="{{ route('softadmin.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
+                                            <i class="softadmin-eye"></i> View
                                         </a>
                                     </td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -72,24 +65,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">
-                        <i class="softadmin-trash"></i> Are you sure you want to delete this {{ $dataType->display_name_singular }}?
-                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="softadmin-trash"></i> Are you sure you want to delete
+                        this {{ $dataType->display_name_singular }}?</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('softadmin.'.$dataType->slug.'.index') }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="Yes, Delete This {{ $dataType->display_name_singular }}">
+                        <input type="submit" class="btn btn-danger pull-right delete-confirm"
+                               value="Yes, Delete This {{ $dataType->display_name_singular }}">
                     </form>
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @stop
 
 @section('javascript')
@@ -100,11 +92,17 @@
         });
 
         $('td').on('click', '.delete', function (e) {
-            id = $(e.target).data('id');
+            var form = $('#delete_form')[0];
 
-            $('#delete_form')[0].action += '/' + id;
+            form.action = parseActionUrl(form.action, $(this).data('id'));
 
             $('#delete_modal').modal('show');
         });
+
+        function parseActionUrl(action, id) {
+            return action.match(/\/[0-9]+$/)
+                    ? action.replace(/([0-9]+$)/, id)
+                    : action + '/' + id;
+        }
     </script>
 @stop

@@ -1,4 +1,4 @@
-@extends('softadmin::master')
+@extends('softadmin::backend.master')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ URL::to(config('softadmin.assets_path')) }}/css/ga-embed.css">

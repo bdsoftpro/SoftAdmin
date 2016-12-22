@@ -24,14 +24,14 @@ class SoftadminDatabaseController extends Controller
     {
         Softadmin::can('browse_database');
 
-        return view('softadmin::tools.database.index');
+        return view('softadmin::backend.tools.database.index');
     }
 
     public function create()
     {
         Softadmin::can('browse_database');
 
-        return view('softadmin::tools.database.edit-add');
+        return view('softadmin::backend.tools.database.edit-add');
     }
 
     public function store(Request $request)
@@ -83,7 +83,7 @@ class SoftadminDatabaseController extends Controller
 
         $rows = $this->describeTable($table);
 
-        return view('softadmin::tools.database.edit-add', compact('table', 'rows'));
+        return view('softadmin::backend.tools.database.edit-add', compact('table', 'rows'));
     }
 
     /**
@@ -176,7 +176,7 @@ class SoftadminDatabaseController extends Controller
 
         $table = $request->input('table');
 
-        return view('softadmin::tools.database.edit-add-bread', $this->prepopulateBreadInfo($table));
+        return view('softadmin::backend.tools.database.edit-add-bread', $this->prepopulateBreadInfo($table));
     }
 
     private function prepopulateBreadInfo($table)
