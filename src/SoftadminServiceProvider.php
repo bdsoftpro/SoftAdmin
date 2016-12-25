@@ -74,7 +74,7 @@ class SoftadminServiceProvider extends ServiceProvider
                 "$basePath/publishable/database/seeds/" => database_path('seeds'),
             ],
             'demo_content' => [
-                "$basePath/publishable/demo_content/" => storage_path('app/public'),
+                "$basePath/publishable/demo_content/" => storage_path('uploads'),
             ],
             'config' => [
                 "$basePath/publishable/config/softadmin.php" => config_path('softadmin.php'),

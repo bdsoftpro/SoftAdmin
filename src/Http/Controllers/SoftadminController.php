@@ -32,7 +32,7 @@ class SoftadminController extends Controller
         $slug = $request->input('type_slug');
         $file = $request->file('image');
         $filename = Str::random(20);
-        $fullPath = $slug.'/'.date('F').date('Y').'/'.$filename.'.'.$file->getClientOriginalExtension();
+        $fullPath = $slug.'/'.date('Y').'/'.date('m').'/'.date('d').'/'.$filename.'.'.$file->getClientOriginalExtension();
 
         $ext = $file->guessClientExtension();
 

@@ -100,7 +100,7 @@ abstract class Controller extends BaseController
             case 'file':
                 if ($file = $request->file($row->field)) {
                     $filename = Str::random(20);
-                    $path = $slug.'/'.date('F').date('Y').'/';
+                    $path = $slug.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
                     $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
 
                     $request->file($row->field)->storeAs(config('softadmin.storage.subfolder').$path, $filename.'.'.$file->getClientOriginalExtension());
@@ -125,7 +125,7 @@ abstract class Controller extends BaseController
                     $file = $request->file($row->field);
                     $filename = Str::random(20);
 
-                    $path = $slug.'/'.date('F').date('Y').'/';
+                    $path = $slug.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
                     $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
 
                     $options = json_decode($row->details);

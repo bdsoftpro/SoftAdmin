@@ -21,34 +21,30 @@ class SoftadminBreadController extends Controller
     //
     //****************************************
 
-    public function index(Request $request)
+    public function index($id)
     {
         // GET THE SLUG, ex. 'posts', 'pages', etc.
-        $slug = $this->getSlug($request);
+        $slug = 'pages';
 
         // GET THE DataType based on the slug
         $dataType = DataType::where('slug', '=', $slug)->first();
 
-        // Check permission
-        Softadmin::can('browse_'.$dataType->name);
+        $dataTypeContent = DB::table($dataType->name)->where('slug', $id)->first(); // If Model doest exist, get data from table name
 
-        // Next Get the actual content from the MODEL that corresponds to the slug DataType
-        if (strlen($dataType->model_name) != 0) {
-            $model = app($dataType->model_name);
-            if ($model->timestamps) {
-                $dataTypeContent = $model->latest()->get();
-            } else {
-                $dataTypeContent = $model->orderBy('id', 'DESC')->get();
-            }
-        } else {
-            // If Model doest exist, get data from table name
-            $dataTypeContent = DB::table($dataType->name)->get();
+        if(!$dataTypeContent){
+                // GET THE SLUG, ex. 'posts', 'pages', etc.
+            $slug = 'posts';
+
+            // GET THE DataType based on the slug
+            $dataType = DataType::where('slug', '=', $slug)->first();
+
+            $dataTypeContent = DB::table($dataType->name)->where('slug', $id)->first(); // If Model doest exist, get data from table name
         }
 
-        $view = 'softadmin::backend.bread.browse';
+        $view = 'softadmin::frontend.bread.read';
 
-        if (view()->exists("softadmin::backend.$slug.browse")) {
-            $view = "softadmin::backend.$slug.browse";
+        if (view()->exists("softadmin::frontend.$slug.read")) {
+            $view = "softadmin::frontend.$slug.read";
         }
 
         return view($view, compact('dataType', 'dataTypeContent'));
@@ -72,17 +68,12 @@ class SoftadminBreadController extends Controller
 
         $dataType = DataType::where('slug', '=', $slug)->first();
 
-        // Check permission
-        Softadmin::can('read_'.$dataType->name);
+        $dataTypeContent = DB::table($dataType->name)->where('slug', $id)->first(); // If Model doest exist, get data from table name
 
-        $dataTypeContent = (strlen($dataType->model_name) != 0)
-            ? call_user_func([$dataType->model_name, 'findOrFail'], $id)
-            : DB::table($dataType->name)->where('id', $id)->first(); // If Model doest exist, get data from table name
+        $view = 'softadmin::frontend.bread.read';
 
-        $view = 'softadmin::backend.bread.read';
-
-        if (view()->exists("softadmin::backend.$slug.read")) {
-            $view = "softadmin::backend.$slug.read";
+        if (view()->exists("softadmin::frontend.$slug.read")) {
+            $view = "softadmin::frontend.$slug.read";
         }
 
         return view($view, compact('dataType', 'dataTypeContent'));

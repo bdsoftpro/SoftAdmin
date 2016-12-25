@@ -70,7 +70,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Admin Title',
-                'value'        => 'Softadmin',
+                'value'        => 'Software Bangladesh',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 4,
@@ -83,7 +83,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Admin Description',
-                'value'        => 'Welcome to Softadmin. The Missing Admin for Laravel',
+                'value'        => 'Welcome to Software Bangladesh Admin Panel',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 5,
